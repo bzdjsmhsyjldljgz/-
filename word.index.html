@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱心代码-手机可看</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        .love {
+            position: absolute;
+            color: pink;
+            font-size: 20px;
+            pointer-events: none;
+            opacity: 0;
+            animation: fade 3s linear;
+        }
+        @keyframes fade {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        const messages = [
+            "你好", "反诈意识不行", "怎么点进来了", "陌生链接不要点", "反诈视频白刷了", 
+            "推荐下载国家反诈app", "网警白忙活了", "已扣款50元", "多去练练反诈意识", "警惕性不行"
+        ];
+        function createLove() {
+            const love = document.createElement("div");
+            love.className = "love";
+            love.innerText = messages[Math.floor(Math.random() * messages.length)];
+            love.style.left = Math.random() * 100 + "vw";
+            love.style.top = Math.random() * 100 + "vh";
+            love.style.color = `rgb(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255})`;
+            love.style.animationDuration = Math.random() * 2 + 3 + "s";
+            document.body.appendChild(love);
+            setTimeout(() => {
+                document.body.removeChild(love);
+            }, 3000);
+        }
+        setInterval(createLove, 500);
+    </script>
+</body>
+</html>
